@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="persona">
+<head>
+    <title></title>
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.min.js"></script>
+    <script type="text/javascript" src="listar.js"></script>
+</head>
+<body ng-controller="PersonaCtrl" ng-init="listar()">
+    <a href="#editar">Nuevo</a>
+    <div ng-view=></div>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Ap. Paterno</th>
+            <th>Ap. Materno</th>
+            <th>Sexo</th>
+            <th>Fecha Nac.</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="persona in list">
+            <td>{{persona.id}}</td>
+            <td>{{persona.nombre}}</td>
+            <td>{{persona.apellidoPaterno}}</td>
+            <td>{{persona.apellidoMaterno}}</td>
+            <td>{{persona.sexo}}</td>
+            <td>{{persona.fechaNacimiento}}</td>
+            <td><a href="#editar/{{persona.id}}">Editar</a></td>
+        </tr>
+    </table>
+</body>
+</html>
