@@ -1,0 +1,9 @@
+<input type="text" placeholder="Nombre" ng-model="persona.nombre"/><br>
+<input type="text" placeholder="Apellido paterno" ng-model="persona.apellidoPaterno"/><br>
+<input type="text" placeholder="Apellido materno" ng-model="persona.apellidoMaterno"/><br>
+<select ng-model="persona.sexo">
+    <option value="MASCULINO">Masculino</option>
+    <option value="FEMENINO">Femenino</option>
+</select><br>
+<input type="text" placeholder="Fecha nacimiento" ng-model="persona.fechaNacimiento"/><br>
+<button ng-click="registrar()">Registrar</button>
