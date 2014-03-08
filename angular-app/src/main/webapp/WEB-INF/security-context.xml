@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd">
+    <bean id="sessionRegistry" class="org.springframework.security.core.session.SessionRegistryImpl" />
+    <bean id="userService" class="mx.com.sevenbrains.security.UserService"/>
+    <bean id="encoderPassword" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <constructor-arg index="0" value="10" />
+    </bean>
+
+    <security:http auto-config="true">
+        <security:access-denied-handler error-page="/publico/index.html" />
+
+        <security:logout delete-cookies="JSESSIONID" invalidate-session="true" logout-success-url="/login.jsp" />
+
+        <security:intercept-url pattern="/persona/**" access="ROLE_ADMIN, ROLE_USER" />
+
+        <security:form-login login-page="/login.jsp" always-use-default-target="true" default-target-url="/persona/listar.html"
+                             authentication-failure-url="/publico/index.html" />
+        <security:http-basic />
+
+        <security:session-management invalid-session-url="/login.jsp">
+            <security:concurrency-control expired-url="/index.jsp" session-registry-ref="sessionRegistry" />
+        </security:session-management>
+
+    </security:http>
+
+
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider user-service-ref="userService">
+            <security:password-encoder ref="encoderPassword" />
+        </security:authentication-provider>
+    </security:authentication-manager>
+</beans>
