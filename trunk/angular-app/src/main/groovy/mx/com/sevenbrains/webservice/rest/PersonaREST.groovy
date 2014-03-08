@@ -41,7 +41,7 @@ class PersonaREST {
         super()
     }
 
-    @POST
+    @GET
     @Path("/list")
     @Consumes("application/json")
     @Produces("application/json")
@@ -50,10 +50,10 @@ class PersonaREST {
     }
 
     @GET
-    @Path("/get/{id}")
+    @Path("/get")
     @Consumes("application/json")
     @Produces("application/json")
-    def Persona get(@PathParam("id") Long id){
+    def Persona get(@QueryParam("id") Long id){
         Persona resultado = null;
         personaList.each {Persona persona ->
             if (persona.id == id){

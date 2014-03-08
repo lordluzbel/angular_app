@@ -1,9 +1,13 @@
-<input type="text" placeholder="Nombre" ng-model="persona.nombre"/><br>
-<input type="text" placeholder="Apellido paterno" ng-model="persona.apellidoPaterno"/><br>
-<input type="text" placeholder="Apellido materno" ng-model="persona.apellidoMaterno"/><br>
-<select ng-model="persona.sexo">
+<input type="text" placeholder="Nombre" ng-model="persona.nombre" class="form-control"/><br>
+<input type="text" placeholder="Apellido paterno" ng-model="persona.apellidoPaterno" class="form-control"/><br>
+<input type="text" placeholder="Apellido materno" ng-model="persona.apellidoMaterno" class="form-control"/><br>
+<select ng-model="persona.sexo" class="form-control">
     <option value="MASCULINO">Masculino</option>
     <option value="FEMENINO">Femenino</option>
 </select><br>
-<input type="text" placeholder="Fecha nacimiento" ng-model="persona.fechaNacimiento"/><br>
-<button ng-click="registrar()">Registrar</button>
+<input type="text" placeholder="Fecha nacimiento" ng-model="persona.fechaNacimiento" class="form-control"/><br>
+
+<div style="text-align: right">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+    <button ng-click="registrar()" class="btn btn-primary">Registrar</button>
+</div>

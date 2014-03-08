@@ -1,47 +1,75 @@
-angular.module("persona.services", [])
-    .factory("PersonaService", function($http){
-        return {
-            put: function(persona){
-                return $http({
+angular.module("persona.services", ["ngResource"])
+    .factory("PersonaService", ["$resource",
+        function($resource){
+            return $resource("../rest/persona/:methodName", {methodName: "list"}, {
+                registrar: {
                     method: "POST"
-                    ,url: "../rest/persona/put"
-                    ,headers: {
-                        "Content-Type" : "application/json"
+                    ,params: {
+                        methodName: "put"
+                        ,persona: "@persona"
                     }
-                    ,data: JSON.stringify(persona)
-                });
-            }
+                    ,isArray: false
+                }
+                ,obtener: {
+                    method: "GET"
+                    ,params: {
+                        methodName: "get"
+                        ,id: "@id"
+                    }
+                    ,isArray: false
+                }
+            });
+        }]);
 
-            ,list: function(){
-                return $http.post("../rest/persona/list");
-            }
 
-            ,get: function(id){
-                return $http.get("../rest/persona/get/" + id);
-            }
-        }
-    });
-
-angular.module("persona", ["ngRoute", "persona.services"])
-    .controller("PersonaCtrl", function($scope, $http, PersonaService, $routeParams){
-        console.log($routeParams.id);
+angular.module("persona", ["ngRoute", "ngGrid", "persona.services"])
+    .controller("PersonaCtrl", function($rootScope, $scope, $http, PersonaService, $routeParams){
         if ($routeParams.id){
-            PersonaService.get($routeParams.id).success(function(data){
-                $scope.persona = data;
-            });
+            $scope.persona = PersonaService.obtener({id: $routeParams.id});
         }
 
-        $scope.listar = function(){
-            PersonaService.list().success(function(data){
-                console.log(data);
+        $scope.list = [];
+
+        //Create grid options
+        $scope.gridOptions = {
+            data: 'list'
+            ,enableRowSelection: false
+            ,enableCellEdit: true
+            ,columnDefs: [
+                {
+                    field: "id"
+                    ,headerCellTemplate: '<a href="#editar" data-toggle="modal" data-target="#myModal">Nuevo</a>'
+                    ,width: "50"
+                    ,cellTemplate: '<div></div><a href="#editar/{{row.getProperty(col.field)}}" data-toggle="modal" data-target="#myModal">Editar</a></div>'
+                    ,enableCellEdit: false
+                }
+                ,{field: "id", displayName: "Id"}
+                ,{field: "nombre", displayName: "Nombre"}
+                ,{field: "apellidoPaterno", displayName: "Apellido Paterno"}
+                ,{field: "apellidoMaterno", displayName: "Apellido Materno"}
+                ,{field: "sexo", displayName: "Sexo"}
+                ,{field: "fechaNacimiento", displayName: "Fecha Nac."}
+            ]
+        }
+
+        //Setup method.
+        $scope.setup = function(){
+            //Get persona list
+            $scope.list = PersonaService.query();
+
+                /*list().success(function(data){
                 $scope.list = data;
-            });
+            });   */
         }
 
         $scope.registrar = function(){
-            PersonaService.put($scope.persona).success(function(data){
-                $scope.list.push(data);
-            });
+            PersonaService.registrar($scope.persona);
+            $scope.list.push($scope.persona);
+            $('#myModal').modal('hide');
+        }
+
+        $scope.mostrarNombre = function(){
+            alert($scope.nombrePersona);
         }
     })
 

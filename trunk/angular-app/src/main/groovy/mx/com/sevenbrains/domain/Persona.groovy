@@ -8,7 +8,7 @@ import javax.persistence.*
 class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "genSeqPersona")
-    @SequenceGenerator(name = "genSeqPersona", sequenceName = "persona_id_seq")
+    @SequenceGenerator(name = "genSeqPersona", sequenceName = "persona_id_seq", allocationSize = 1)
     Long id;
     String nombre;
     String apellidoPaterno;
