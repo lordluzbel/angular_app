@@ -19,7 +19,7 @@ import javax.persistence.Table
  */
 @Entity
 @Table(name = "usuarios")
-@NamedNativeQueries([@NamedNativeQuery(name = Usuario.ROLES, query = """ select cr.nombre_rol as nombre_rol, cr.desc_rol from roles cr join usuarios_roles ur on ur.nombre_rol = cr.nombre_rol and ur.nombre_usuario = :nombre_usuario """, resultClass = Roles.class)])
+@NamedNativeQueries([@NamedNativeQuery(name = "usuariosRoles", query = "select cr.nombre_rol as nombre_rol, cr.desc_rol from roles cr join usuarios_roles ur on ur.nombre_rol = cr.nombre_rol and ur.nombre_usuario = :nombre_usuario", resultClass = Roles.class)])
 class Usuario {
     @Id
     @Column(nullable = false, unique = true)
@@ -49,7 +49,5 @@ class Usuario {
             , joinColumns = [@JoinColumn(name = "nombre_usuario", nullable = false, updatable = false)]
             , inverseJoinColumns = [@JoinColumn(name = "nombre_rol", nullable = false, updatable = false)])
     Set<Roles> roles;
-
-    static final String ROLES = "usuarios_roles"
 
 }
