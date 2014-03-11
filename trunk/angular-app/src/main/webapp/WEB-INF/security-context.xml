@@ -19,7 +19,7 @@
 
         <security:intercept-url pattern="/persona/**" access="ROLE_ADMIN, ROLE_USER" />
 
-        <security:form-login login-page="/login.jsp" always-use-default-target="true" default-target-url="/persona/listar.html"
+        <security:form-login login-page="/login.jsp" always-use-default-target="true" default-target-url="/persona/listar.jsp"
                              authentication-failure-url="/publico/index.html" />
         <security:http-basic />
 

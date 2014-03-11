@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html ng-app="persona">
 <head>
     <title>Modulo de personas</title>
@@ -38,6 +39,7 @@
 <body ng-controller="PersonaCtrl" ng-init="setup()">
     <div class="page-header">
         <h1>Modulo de personas</h1>
+        <div style="text-align: right"><a href="<c:url value="/j_spring_security_logout" />">Logout</a></div>
     </div>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
