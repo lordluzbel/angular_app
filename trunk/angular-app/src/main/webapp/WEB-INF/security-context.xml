@@ -18,6 +18,7 @@
         <security:logout delete-cookies="JSESSIONID" invalidate-session="true" logout-success-url="/login.jsp" />
 
         <security:intercept-url pattern="/persona/**" access="ROLE_ADMIN, ROLE_USER" />
+        <security:intercept-url pattern="/rest/**" access="ROLE_ADMIN, ROLE_USER" />
 
         <security:form-login login-page="/login.jsp" always-use-default-target="true" default-target-url="/persona/listar.jsp"
                              authentication-failure-url="/publico/index.html" />
