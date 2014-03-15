@@ -1,12 +1,11 @@
 package mx.com.sevenbrains.service
 
 import mx.com.sevenbrains.dao.SimpleDAO
-import mx.com.sevenbrains.domain.Roles
-import mx.com.sevenbrains.domain.Usuario
+import mx.com.sevenbrains.model.Roles
+import mx.com.sevenbrains.model.Usuario
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.context.ApplicationContext
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.test.context.ContextConfiguration
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner

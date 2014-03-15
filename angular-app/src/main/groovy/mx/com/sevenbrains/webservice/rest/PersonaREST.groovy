@@ -1,6 +1,6 @@
 package mx.com.sevenbrains.webservice.rest
-import mx.com.sevenbrains.domain.Persona
-import mx.com.sevenbrains.domain.Sexo
+import mx.com.sevenbrains.model.Persona
+import mx.com.sevenbrains.model.Sexo
 
 import javax.ws.rs.*
 /**
