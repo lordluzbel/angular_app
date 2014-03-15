@@ -3,14 +3,14 @@ package mx.com.sevenbrains.dao
 import org.hibernate.SessionFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport
 import org.springframework.stereotype.Repository
 
 /**
  * Created by lordluzbel on 28/02/14.
  */
 @Repository
-class SimpleDAO extends HibernateDaoSupport{
+class SimpleDAO extends HibernateDaoSupport {
     @Autowired
     @Qualifier("sessionFactory")
     @Override
