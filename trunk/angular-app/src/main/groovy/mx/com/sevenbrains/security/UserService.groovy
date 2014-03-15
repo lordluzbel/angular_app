@@ -1,8 +1,8 @@
 package mx.com.sevenbrains.security
 
 import mx.com.sevenbrains.dao.SimpleDAO
-import mx.com.sevenbrains.domain.Roles
-import mx.com.sevenbrains.domain.Usuario
+import mx.com.sevenbrains.model.Roles
+import mx.com.sevenbrains.model.Usuario
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority

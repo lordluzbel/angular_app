@@ -1,4 +1,4 @@
-package mx.com.sevenbrains.domain
+package mx.com.sevenbrains.model
 
 import org.hibernate.annotations.Type
 

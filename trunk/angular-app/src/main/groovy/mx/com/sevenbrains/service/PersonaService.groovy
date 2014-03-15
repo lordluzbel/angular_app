@@ -1,6 +1,6 @@
 package mx.com.sevenbrains.service
 import mx.com.sevenbrains.dao.SimpleDAO
-import mx.com.sevenbrains.domain.Persona
+import mx.com.sevenbrains.model.Persona
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 /**
