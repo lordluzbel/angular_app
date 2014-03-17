@@ -35,7 +35,7 @@ class UserService implements UserDetailsService {
 
     def List<GrantedAuthority> getRoles(Usuario usuario)  {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        List<Roles> listaRoles = simpleDAO.hibernateTemplate.findByNamedQueryAndNamedParam("usuariosRoles", "nombre_usuario", usuario.nombre_usuario)
+        List<Roles> listaRoles = simpleDAO.hibernateTemplate.findByNamedQueryAndNamedParam("Usuario.getRoles", "nombre_usuario", usuario.nombre_usuario)
         listaRoles.each() {
             authorities.add(new SimpleGrantedAuthority(it.nombre_rol))
         }

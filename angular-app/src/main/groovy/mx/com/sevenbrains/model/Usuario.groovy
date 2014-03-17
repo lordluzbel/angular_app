@@ -19,7 +19,6 @@ import javax.persistence.Table
  */
 @Entity
 @Table(name = "usuarios")
-@NamedNativeQueries([@NamedNativeQuery(name = "usuariosRoles", query = "select cr.nombre_rol as nombre_rol, cr.desc_rol from roles cr join usuarios_roles ur on ur.nombre_rol = cr.nombre_rol and ur.nombre_usuario = :nombre_usuario", resultClass = Roles.class)])
 class Usuario {
     @Id
     @Column(nullable = false, unique = true)
